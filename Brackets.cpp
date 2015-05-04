@@ -13,8 +13,7 @@ int solution(string &S) {
     if (S.empty()) return 1;
     if (S.size() == 1) return 0;
     stack<char> brackets;
-    brackets.push(S[0]);
-    for (auto i = S.begin()+1; i != S.end(); i++) {
+    for (auto i = S.begin(); i != S.end(); i++) {
         if (brackets.empty()) {
             brackets.push(*i);
             continue;
