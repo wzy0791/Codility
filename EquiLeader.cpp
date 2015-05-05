@@ -1,3 +1,6 @@
+//expected worst-case time complexity is O(N);
+//expected worst-case space complexity is O(N)
+
 #include <algorithm>
 #include <stack>
 
