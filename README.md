@@ -1,2 +1,2 @@
 # Codility
-100/100 cpp solutions for problems in Codility
+100/100 python or cpp solutions for problems in Codility
