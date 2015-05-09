@@ -12,6 +12,7 @@ def solution(A):
         return 0
         
     for max_flags in range(len(peaks), 1, -1):
+        # to satisfy O(N) time complexity, need to compute the upper limit of max_flag
         if (max_flags*(max_flags-1) <= peaks[len(peaks)-1]-peaks[0]):
             flags = max_flags-1
             prev_flag = peaks[0]
