@@ -6,7 +6,7 @@ def primeSieve(N):
     # algorithm to find numbers that are not prime numbers
     i = 2
     while (i * i <= N):
-        if (prime_sieve[i]):
+        if prime_sieve[i]:
             k = i*i
             while (k <= N):
                 prime_sieve[k] = False
@@ -15,38 +15,39 @@ def primeSieve(N):
     
     return prime_sieve
     
-def partialSemiPrime(N):
+def partialSemiprime(N):
     prime_sieve = primeSieve(N)
     # primes vector to store all the prime numbers
     primes = []
     for i in range(len(prime_sieve)):
-        if (prime_sieve[i]):
+        if prime_sieve[i]:
             primes.append(i)
             
-    semi_prime_sieve = [False] * (N+1)
+    # first assume that numbers from 0 to N are NOT semiprime numbers        
+    semiprime_sieve = [False] * (N+1)
     for i in range(len(primes)):
         if (i * i > N):
             break
         for j in range(i, len(primes)):
             if primes[i] * primes[j] > N:
                 break
-            semi_prime_sieve[primes[i] * primes[j]] = True
+            semiprime_sieve[primes[i] * primes[j]] = True
             
-    partial_semi_prime = []
+    partial_semiprime = []
     count = 0
-    for x in semi_prime_sieve:
+    for x in semiprime_sieve:
         if x:
             count += 1
-        partial_semi_prime.append(count)
+        partial_semiprime.append(count)
         
-    return partial_semi_prime
+    return partial_semiprime
 
 def solution(N, P, Q):
     # write your code in Python 2.7
-    partial_semi_prime = partialSemiPrime(N)
+    partial_semiprime = partialSemiprime(N)
     result = []
     M = len(P)
     for i in range(M):
-        result.append(partial_semi_prime[Q[i]] - partial_semi_prime[P[i]-1])
+        result.append(partial_semiprime[Q[i]] - partial_semiprime[P[i]-1])
         
     return result
