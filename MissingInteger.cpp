@@ -1,3 +1,4 @@
+#include <algorithm>
 int solution(vector<int> &A) {
     // write your code in C++11
     int n = A.size();
