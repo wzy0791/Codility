@@ -1,15 +1,19 @@
+#include <algorithm>
 int solution(vector<int> &A) {
     // write your code in C++11
-    int n = A.size(); // n>=2
-    int m = 6; // six-sided die
-    vector<int> f;
-    f.push_back(A[0]);
+    int n = A.size();
+    vector<int> max_at (n);
+    max_at[0] = A[0];
+    
     for (int i=1; i<n; i++) {
-        int cur_max = f[i-1];
-        for (int j = 2; i-j >= 0 && j<=m; j++) {
-            cur_max = max(cur_max, f[i-j]);
+        // find max_before A[i]
+        int max_before = max_at[i-1];
+        int j = 2;
+        while (j<=i && j<=6) {
+            max_before = max(max_before, max_at[i-j]);
+            j++;
         }
-        f.push_back(cur_max + A[i]);
+        max_at[i] = max_before + A[i];
     }
-    return f.back();
+    return max_at[n-1];
 }
