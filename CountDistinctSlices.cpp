@@ -9,7 +9,7 @@ int solution(int M, vector<int> &A) {
     while (j<n) {
         if (used[A[j]] == false) { // moving j
             used[A[j]] = true;
-            count += j-i+1; // key: how to calculate the number of slices
+            count += j-i+1; // key: how to calculate the number of slices end at j and starting at i
             if (count > 1000000000) return 1000000000;
             j++;
         } else { // moving i
